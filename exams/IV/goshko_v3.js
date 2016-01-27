@@ -17,7 +17,7 @@ function goshko(arr){
 		"!":0,
 		"wall hits": 0
 	},
-	overallRegx = /{[*&!#]}/g;
+	overallRegx = /{(\*|&|!|#)}/g;
 	
 	for (var i = 1; i < arr.length; i ++){
 		var row = arr[i].split(",");
@@ -53,7 +53,7 @@ function goshko(arr){
 	function format(str, regx) {
 	  function replaceAndLog(match) { 
 
-	  	output[match] += 1;
+	  	output[match[1]] += 1;
 	    return '@';
 	  }
 	  return str.replace(regx, replaceAndLog);
