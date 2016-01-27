@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<style>
+		body {
+			font-family:sans-serif;
+			color:#1e1e1e;
+			background:#eeeeee;
+		}
+		p {
+			margin:0;
+		}
+		.board {
+			display:table;
+		}
+		.row {
+			display:table-row;
+		}
+		
+		.cell {
+		    display: table-cell;
+		    width: 50px;
+		    height: 50px;
+		    border: 3px solid rebeccapurple;
+		    text-align: center;
+		    vertical-align: middle;
+		    font-size: 45px;
+		    line-height: 45px;
+		}
+		.cell:first-of-type {
+			border-left:none;
+		}
+		.cell:last-of-type {
+			border-right:none;
+		}
+		.row:first-of-type .cell {
+			border-top:none;
+		}
+		.row:last-of-type .cell {
+			border-bottom:none;
+		}
+		.pink {
+			color:teal;
+		}
+		.grey {
+			color:grey;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>Tic Tac Toe</h1>
+		<div id="board">
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+		</div>
+		<script>
+		var cells = document.getElementsByClassName("cell");
+		
+		function gameOver(){
+			for (var i = 0; i < cells.length; i++) {
+			    cells[i].removeEventListener('click', cellClick, false);
+			}
+		}
+		function isRow(tests, board, player) {
+			var start, end, step;
+
+			if (tests.length == 0) {
+				return false
+			
+			} else {
+				start = tests[tests.length-1][0];
+				end = tests[tests.length-1][1];
+				step = tests[tests.length-1][2];
+
+			}
+			
+			var isWin = true;
+			for (var i = start; i < end; i += step) {
+				if (board[i] != player) {
+					isWin = false;
+				}
+			}
+			if ( !isWin ) {
+				return isRow(tests.slice(0, -1), board, player)
+			} else {
+				return isWin
+			}
+			
+		}
+		function cellClick(){
+			var allTests = [ [0, 3, 1], [3, 6, 1], [6, 9, 1], [0, 10, 4], [2, 7, 2], [0, 8, 3], [1, 9, 3], [2, 10, 3]];
+			if ( !this.innerHTML) {
+				step += 1;
+				if (step%2 != 0 ) {
+					this.innerHTML = "<span class='pink'>X</span>";
+				} else {
+					this.innerHTML = "<span class='grey'>O</span>"
+				}
+			}
+
+			var board = [];
+			for (var i = 0; i < cells.length; i++) {
+			    board.push(cells[i].innerText)
+			}
+
+			var isGameWonX = isRow(allTests, board, "X");
+			var isGameWonO = isRow(allTests, board, "O");
+			
+
+			if (isGameWonO ) {
+				alert("Game Over. Player O has won.");
+				gameOver();
+			} else if (isGameWonX) {
+				alert("Game Over. Player X has won.")
+				gameOver();
+			}
+			
+		}
+		
+		for (var i = 0; i < cells.length; i++) {
+		    cells[i].addEventListener('click', cellClick, false);
+		}
+		</script>
+	</body>
+</html>

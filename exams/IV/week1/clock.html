@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<style>
+		p {
+			margin:0;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>Current time:</h1>
+		<p id="timer-wrapper"></p>
+		<script>
+
+			var container = document.getElementById("timer-wrapper")
+			function formatTime(num){
+				if ( num < 10) {
+					return "0" + num
+				}
+				return num
+			}
+			function getTime() {
+				var time = new Date()
+				var hours = time.getHours()
+				var minutes = time.getMinutes()
+				var seconds = time.getSeconds()
+				return formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+			}
+			
+			
+			timer = setInterval(function(){
+				var time = getTime()
+				container.innerHTML ="<p>" + getTime() 
+			}, 1000)
+		
+		
+		</script>
+	</body>
+</html>

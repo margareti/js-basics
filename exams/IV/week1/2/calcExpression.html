@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		
+		<style>
+		body {
+			font-family:sans-serif;
+			color:#1e1e1e;
+			background:#eeeeee;
+		}
+		#inputField {
+		    border: 1px solid rebeccapurple;
+		    padding: 11px;
+		}
+		.evalBtn {
+		    border: 1px solid royalblue;
+		    display: inline-block;
+		    padding: 10px;
+		    color: royalblue;
+		    background: rgba(0,0,0, 0.8);
+		    border-radius: 10px;
+		    margin-left: 10px;
+		    cursor:pointer;
+		}
+		.evalBtn:hover {
+			border: 1px solid pink;
+		}
+		#output {
+		    border: 1px solid rebeccapurple;
+		    display: block;
+		    width: 400px;
+		    height: 30px;
+		    margin-top: 20px;
+		    color: #1e1e1e;
+		    padding: 5px;
+		    line-height: 30px;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>Calculate Expression</h1>
+		<input type="text" id="inputField">
+		<div class="evalBtn" id="evalButtonId" >Evaluate!</div>
+		<div id="output"></div>
+		<script src="calcExpression.js"></script>
+	</body>
+</html>
