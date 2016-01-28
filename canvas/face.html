@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<style>
+		html, body {
+			padding:0;
+			margin:0;
+			background:#1e1e1e;
+		}
+		canvas {
+			margin:30px auto;
+			display:block;
+			background:#eee;
+			border-radius:10px;
+		}
+		
+	</style>
+ </head>
+<body>
+	<canvas id="can" width="600" height="600"></canvas>
+	<script>
+
+	//Using beginPath(), moveTo(), lineTo(), arc() and stroke()/fill() try to visualize the image
+
+		var canvas = document.getElementById("can"),
+			ctx = canvas.getContext('2d'),
+			lineW = 3;
+
+			ctx.beginPath();
+			// ctx.moveTo(250, 250);
+
+			function rad(deg){
+				return deg *  Math.PI / 180; 
+			}
+
+
+			ctx.strokeStyle = "#1e505b";
+			ctx.lineWidth = lineW;
+			ctx.fillStyle = "#90cad7";
+			ctx.arc(300, 300, 80, 0, rad(360) );
+
+			ctx.fill();
+			ctx.stroke();
+
+			ctx.moveTo(300, 280);
+			ctx.lineTo(280, 320);
+			ctx.lineTo(300, 320);
+			ctx.stroke();
+			ctx.closePath();
+
+
+			
+			
+			function drawEllipse(x, y, rx, ry, line, stroke, fill){
+				var yPos, xPos;
+				ctx.beginPath();
+				ctx.lineWidth = line;
+				ctx.strokeStyle = stroke;
+				ctx.fillStyle = fill;
+
+				for (var i = 0 * Math.PI; i < 2 * Math.PI; i += 0.01 ) {
+				    xPos = x - (ry * Math.sin(i)) * Math.sin(0 * Math.PI) + (rx * Math.cos(i)) * Math.cos(0 * Math.PI);
+				    yPos = y + (rx * Math.cos(i)) * Math.sin(0 * Math.PI) + (ry * Math.sin(i)) * Math.cos(0 * Math.PI);
+
+				    if (i == 0) {
+				        ctx.moveTo(xPos, yPos);
+				    } else {
+				        ctx.lineTo(xPos, yPos);
+				    }
+				}
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+			}
+			
+			
+			drawEllipse(300, 210, 70, 30, 7, '#232323', '#396693');
+
+			drawEllipse(265, 280, 12, 9, 3, '#232323', 'transparent');
+			drawEllipse(325, 280, 12, 9, 3, '#232323', 'transparent');
+
+			drawEllipse(260, 280, 3, 5, 3, '#232323', '#232323');
+			drawEllipse(320, 280, 3, 5, 3, '#232323', '#232323');
+
+			ctx.rotate(rad(30))
+
+			
+	</script>
+</body>
+</html>

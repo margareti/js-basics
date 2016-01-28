@@ -5,33 +5,86 @@
 		html, body {
 			padding:0;
 			margin:0;
+			background:#1e1e1e;
 		}
 		canvas {
 			margin:30px auto;
 			display:block;
 		}
+		/*.neon {
+			text-align: center;
+			font-size:100px;
+			text-transform: uppercase;
+			padding:100px 0;
+			color:#fff;
+			font-family: Courier;
+			text-shadow: 0 0 10px #fff,
+						 0 0 20px #fff,
+						 0 0 30px #fff,
+						 0 0 40px #ff00de, 
+						 0 0 70px #ff00de,
+						 0 0 80px #ff00de,
+						 0 0 100px #ff00de,
+						 0 0 150px #ff00de;
+		}*/
 	</style>
  </head>
 <body>
-	<canvas id="can" width="600" height="400"></canvas>
+<!-- <div class="neon">Neon</div>
+ -->	<canvas id="can" width="600" height="600"></canvas>
 	<script>
 		var canvas = document.getElementById("can"),
-		ctx = canvas.getContext("2d");
-		ctx.lineWidth = 10;
-		ctx.strokeStyle = "pink";
+			ctx = canvas.getContext("2d"),
+			name = "Margarita",
+			blur = 10,
+			posX = -450,
+			shadowOfst = 480;
+
 		ctx.beginPath();
 		ctx.moveTo(0, 0);
 		ctx.lineTo(600, 0)
-		ctx.lineTo(600, 400);
-		ctx.lineTo(0, 400);
+		ctx.lineTo(600, 600);
+		ctx.lineTo(0, 600);
 		ctx.closePath();
+
+		
+		ctx.lineWidth = 10;
+		ctx.strokeStyle = "pink";
+		ctx.fillStyle = "pink";
+		ctx.shadowColor = "#fff";
+		ctx.shadowOffsetX = 0;
+		ctx.shadowOffsetY = 0;
+		ctx.shadowBlur = 10;
+
+		
+		ctx.font = "100px Open Sans";
 	
 		
 		ctx.stroke();
 
+		for (var i = 0; i < 40; i += 10) {
+			ctx.shadowBlur = blur += i;
+			ctx.shadowOffsetX = shadowOfst;
+			ctx.fillText(name, posX, 150);
 
-		ctx.font = "50px Arial";
-		ctx.fillText("Margarita", 10, 60);
+
+		}
+		for (var i = 30; i < 200; i += 40) {
+			ctx.shadowBlur = blur += i;
+			ctx.shadowColor = "#ff00de";
+			ctx.shadowOffsetX = shadowOfst;
+			ctx.fillText(name, posX, 150);
+
+
+		}
+
+		
+
+		
+		ctx.fillText(name, 30, 150);
+		
+
+// 
 	</script>
 </body>
 </html>
