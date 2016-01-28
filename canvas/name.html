@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<style>
+		html, body {
+			padding:0;
+			margin:0;
+		}
+		canvas {
+			margin:30px auto;
+			display:block;
+		}
+	</style>
+ </head>
+<body>
+	<canvas id="can" width="600" height="400"></canvas>
+	<script>
+		var canvas = document.getElementById("can"),
+		ctx = canvas.getContext("2d");
+		ctx.lineWidth = 10;
+		ctx.strokeStyle = "pink";
+		ctx.beginPath();
+		ctx.moveTo(0, 0);
+		ctx.lineTo(600, 0)
+		ctx.lineTo(600, 400);
+		ctx.lineTo(0, 400);
+		ctx.closePath();
+	
+		
+		ctx.stroke();
+
+
+		ctx.font = "50px Arial";
+		ctx.fillText("Margarita", 10, 60);
+	</script>
+</body>
+</html>
