@@ -76,13 +76,28 @@
 			
 			drawEllipse(300, 210, 70, 30, 7, '#232323', '#396693');
 
+
 			drawEllipse(265, 280, 12, 9, 3, '#232323', 'transparent');
 			drawEllipse(325, 280, 12, 9, 3, '#232323', 'transparent');
+			drawEllipse(295, 345, 20, 9, 3, '#232323', 'transparent');
 
 			drawEllipse(260, 280, 3, 5, 3, '#232323', '#232323');
 			drawEllipse(320, 280, 3, 5, 3, '#232323', '#232323');
 
-			ctx.rotate(rad(30))
+			ctx.beginPath();
+			ctx.fillStyle = "#396693";
+			ctx.fillRect(270, 110, 60, 100);
+			ctx.stroke();
+
+			ctx.moveTo(270, 210);
+			ctx.lineTo(270, 110);
+			ctx.lineTo(330, 110);
+			ctx.lineTo(330, 210);
+			ctx.stroke();
+
+			drawEllipse(300, 110, 30, 7, 7, '#232323', '#396693');
+
+
 
 			
 	</script>

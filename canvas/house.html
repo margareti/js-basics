@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<style>
+		html, body {
+			padding:0;
+			margin:0;
+			background:#eee;
+		}
+		canvas {
+			margin:30px auto;
+			display:block;
+		}
+		
+	</style>
+ </head>
+<body>
+	<canvas id="can" width="700" height="700"></canvas>
+	<script>
+		var canvas = document.getElementById("can"),
+			ctx = canvas.getContext("2d"),
+			fill = "#9c6161",
+			lineW = "5",
+			smallerLine = "3";
+
+
+			function drawEllipse(x, y, rx, ry){
+				var yPos, xPos;
+				
+
+				for (var i = 0 * Math.PI; i < 2 * Math.PI; i += 0.01 ) {
+				    xPos = x - (ry * Math.sin(i)) * Math.sin(0 * Math.PI) + (rx * Math.cos(i)) * Math.cos(0 * Math.PI);
+				    yPos = y + (rx * Math.cos(i)) * Math.sin(0 * Math.PI) + (ry * Math.sin(i)) * Math.cos(0 * Math.PI);
+
+				    if (i == 0) {
+				        ctx.moveTo(xPos, yPos);
+				    } else {
+				        ctx.lineTo(xPos, yPos);
+				    }
+				}
+				
+			}
+			function rad(deg){
+				return deg *  Math.PI / 180; 
+			}
+			ctx.beginPath();
+			ctx.moveTo(5, 230);
+			ctx.lineTo(400, 230)
+			ctx.lineTo(400, 530);
+			ctx.lineTo(5, 530);
+			ctx.closePath();
+			
+			ctx.strokeStyle = "#1e1e1e";
+			ctx.fillStyle = fill;
+			ctx.lineWidth = lineW;
+			ctx.stroke();
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.moveTo(6,227 );
+			ctx.lineTo(200, 6);
+			ctx.lineTo(400, 227)
+			ctx.closePath();
+
+			ctx.stroke();
+			ctx.fill();
+
+			ctx.beginPath();
+
+			ctx.lineWidth = smallerLine;
+			ctx.fillRect(300, 100, 40, 110);
+
+			ctx.stroke();
+			ctx.fill();
+
+			ctx.moveTo(300,210 );
+			ctx.lineTo(300, 100);
+
+			ctx.moveTo(340, 100);
+			ctx.lineTo(340, 210);
+			ctx.closePath();
+			ctx.stroke();
+
+
+
+			ctx.fillStyle = "#1e1e1e";
+			ctx.fillRect(30, 250, 75, 45);
+			ctx.fillRect(110, 250, 75, 45);
+			ctx.fillRect(30, 300, 75, 45);
+			ctx.fillRect(110, 300, 75, 45);
+
+			ctx.fillRect(220, 250, 75, 45);
+			ctx.fillRect(300, 250, 75, 45);
+			ctx.fillRect(220, 300, 75, 45);
+			ctx.fillRect(300, 300, 75, 45);
+
+			ctx.fillRect(220, 370, 75, 45);
+			ctx.fillRect(300, 370, 75, 45);
+			ctx.fillRect(220, 420, 75, 45);
+			ctx.fillRect(300, 420, 75, 45);
+
+
+			ctx.beginPath();
+			ctx.moveTo(108, 530);
+			ctx.lineTo(108, 400);
+
+
+			ctx.stroke();
+			ctx.fill();
+
+			lineWidth = lineW;
+			drawEllipse(320, 100, 20, 7);
+			ctx.closePath();
+			ctx.fillStyle = fill;
+			ctx.stroke();
+			ctx.fill();
+
+
+			ctx.beginPath();
+			ctx.arc(90, 480, 5, 0, rad(360) );
+			ctx.closePath();
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.arc(125, 480, 5, 0, rad(360) );
+			ctx.closePath();
+			ctx.stroke();
+
+
+			ctx.beginPath();
+			ctx.arc(108, 460, 60, rad(220), rad(320) );
+
+
+			ctx.stroke();
+
+			ctx.closePath();
+			ctx.beginPath();
+			ctx.moveTo(62, 421);
+			ctx.lineTo(62, 530);
+			ctx.stroke();
+
+			ctx.closePath();
+			ctx.beginPath();
+			ctx.moveTo(154, 421);
+			ctx.lineTo(154, 530);
+			ctx.stroke();
+			
+
+
+		
+		
+		
+
+		
+		
+
+
+	</script>
+</body>
+</html>
