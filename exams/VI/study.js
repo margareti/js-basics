@@ -21,22 +21,8 @@ function solve(arr){
 			tests[course][name] = student; 
 		}
 		grade >= 0 && grade <= 400 ? tests[course][name].result.push(grade) : console.log() ;
-		
 	}
-	function sortKeys(obj){
-		var tempArr = [],
-			tempObj = {};
 
-		for (var key in obj){
-			tempArr.push([key, obj[key]]);
-		}
-		// tempArr = tempArr.sort();
-
-		for (var item in tempArr) {
-			tempObj[tempArr[item][0]] = [];
-		}
-		return tempObj;
-	}
 	function sortByGrade(arr){
 		//console.log(arr)
 		function compare(a, b){
@@ -56,8 +42,9 @@ function solve(arr){
 		}
 		return arr.sort(compare);
 	}
-	var result = sortKeys(tests);
+	var result = {};
 	for (var k in tests) {
+		result[k] = [];
 		for (var name in tests[k]) {
 
 			tests[k][name].makeUpExams = tests[k][name].result.length - 1;
@@ -65,9 +52,6 @@ function solve(arr){
 			tests[k][name].result = max;
 			result[k].push(tests[k][name])
 		}
-		//console.log(tests[k])
-
-
 	}
 
 	for (var item in result) {
