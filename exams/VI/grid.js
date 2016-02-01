@@ -11,25 +11,7 @@ function solve(arr){
 		row = row.map(function(el){return parseInt(el)});
 		matrix.push(row);
 	}
-	//console.log(matrix)
 
-	function calculate(pos){
-		var sum; 
-		for (i = 0; i < matrix.length; i ++ ) {
-			for (idx = 0; idx < matrix[0].length; idx ++ ) {
-
-				if (pos[0] !== i || pos[1] !== idx) {
-					sum = matrix[pos[0]][pos[1]] + matrix[i][idx];
-					//console.log("comparing to ", matrix[i][idx]);
-					//console.log("sum is ", sum)
-				}
-				// if (sum === number) {
-				// 	return [pos[0], pos[1], i, idx];
-				// }
-			}
-		}
-
-	}
 	function getPos(){
 		for (i = 0; i < matrix.length; i ++) {
 			for (idx = 0; idx < matrix[0].length; idx ++ ) {
@@ -42,7 +24,6 @@ function solve(arr){
 						if (i !== ii || idx !== iii) {
 							sum = current + compare;
 							if (sum == number) {
-								//console.log(current, compare)
 								result = [i, idx, ii, iii];
 								return result;
 							}
@@ -59,7 +40,6 @@ function solve(arr){
 	for (var ltr in stringToChange) {
 		var letter = stringToChange[ltr];
 		asciiNum = ltr % 2 == 0 ? letter.charCodeAt() + reduced : letter.charCodeAt() - reduced; 
-		//console.log(asciiNum)
 		convert = String.fromCharCode(asciiNum);
 
 		stringToChange[ltr] = convert;
